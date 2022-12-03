@@ -1,20 +1,20 @@
 from django.db import models
 
 class BaseModel(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True, blank=True)
-    updated_at = models.DateTimeField(auto_now_add=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     class Meta:
         abstract=True
 
 
 class Team(BaseModel):
-    name = models.CharField(primary_key=True, max_length=25, unique=True, blank=True)
+    name = models.CharField(primary_key=True, max_length=25, unique=True)
 
 
 class Stadium(BaseModel):
-    name = models.CharField(primary_key=True, max_length=25, unique=True, blank=True)
-    capacity = models.IntegerField(blank=True)
+    name = models.CharField(primary_key=True, max_length=25, unique=True)
+    capacity = models.IntegerField(null=True, blank=True)
 
 
 class Match(BaseModel):

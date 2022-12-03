@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from match.models import Match
+from rest_framework import viewsets
+from .serializers import MatchSerializer
 
-# Create your views here.
+# ViewSets define the view behavior.
+class MatchViewSet(viewsets.ModelViewSet):
+    queryset = Match.objects.all()
+    serializer_class = MatchSerializer
